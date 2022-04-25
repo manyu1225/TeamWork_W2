@@ -1,23 +1,24 @@
 const SuccessMessage = require('./SuccessOutputHandle');
 const errorHandle=require('./errorHandle')
+const ArticleList = require('./models/ArticleList');
+
+const save = async()=>{
+    console.log("開始新增貼文") //紀錄用
+    const AllPost =await ArticleList.create(userdata);
+    SuccessMessage(res,"已經成功新增");
+}
 
 /**
  * 新增貼文
- * @param {*} model    mongooseModel
  * @param {*} userdata 新增資料內容
  */
- async function postArticleContent(res,model,userdata){
+ async function postArticleContent(res,userdata){
     if(! userdata){
         errorHandle(res,415,'請傳入新增內容')
         return;
     }
-    
-    
-    console.log("開始新增貼文") //紀錄用
-    const init = async()=>{
-        const AllPost =await model.create(userdata);
-        SuccessMessage(res,"已經成功新增");
-    }
+      
+    save();
 }
 
 module.exports= postArticleContent;

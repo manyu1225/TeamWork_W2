@@ -12,7 +12,6 @@ function SuccessMessage(res,Output){
         "status":'success',
         "data":outputData
     }))
-    res.end();
 }
 
 

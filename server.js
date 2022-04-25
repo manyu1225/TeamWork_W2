@@ -21,34 +21,43 @@ const requestListener =async (req, res) =>{
         res.writeHead(200, {'Content-Type': 'text/html'});
         res.write('<h1>首頁</h1>');
         res.end();
+        return;
     } else if ( req.url === '/ArticleList' && req.method === 'GET' ) {
-        getArticleList(res)
+        await getArticleList(res)
+        res.end();
+        return;
     } else if ( req.url === '/ArticleList' && req.method === 'POST' ) {
-        res.on('end', async()=>{       
+        req.on('end', async()=>{       
             try {
                 let data = JSON.parse(body);
-                if(!data[articleContent] || data[articleContent].trim().length>0 ){
+
+                if(!data.articleContent || data.articleContent.trim().length==0 ){
                     throw '貼文內容為必填'
                 }
-                if(!data[userName] || data[userName].trim().length>0 ){
+                if(!data.userName || data.userName.trim().length==0 ){
                     throw '發文者為必填'
                 }
-                if(!data[userPhoto] || data[userPhoto].trim().length>0 ){
+                if(!data.userPhoto || data.userPhoto.trim().length==0 ){
                     throw '發文者照片為必填'
                 }
-                await postArticleContent(res,mongoose,ArticleList,data)
+
+                await postArticleContent(res,data)
+                console.log('儲存完成')
             } catch (error) {
-                errorHandle(res,415,error+"儲存錯誤");
+                errorHandle(res,415,error+"，儲存錯誤");
             }
         });
+        res.end();
+        return;
     } else if ( req.method === 'OPTIONS' ) {
         res.writeHead(200);
         res.end();
+        return;
     } else {
         errorHandle(res,405,"請確認傳輸方式");
         res.end();
+        return;
     }
-    res.end();
 }
 
 const server = http.createServer(requestListener);
