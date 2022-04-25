@@ -17,4 +17,6 @@ const articleListSchema = new mongoose.Schema(
 );
 
 const ArticleList = mongoose.model('ArticleList', articleListSchema);
+
 module.exports = ArticleList;
+
