@@ -12,9 +12,12 @@ const articleListSchema = new mongoose.Schema(
     },
     {
         versionKey: false,          // 關閉預設欄位 _v
-        collation: 'articlelist'    // 指定 Schema 名稱(不加s)
+        collection: "articlelist"   // 指定 Schema 名稱(不加s)
+
     }
 );
 
 const ArticleList = mongoose.model('ArticleList', articleListSchema);
+
 module.exports = ArticleList;
+
