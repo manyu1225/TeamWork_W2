@@ -8,8 +8,14 @@ const errorHandle=require('../utils/errorHandle');
 const SuccessMessage = require('../utils/SuccessOutputHandle');
 const { headers } = require('../utils//libs');
 const PORT =3005; 
+const dotenv = require('dotenv');
+dotenv.config({ path: '../config.env' });
+const DB = process.env.DATABASE.replace(
+	'<password>',
+	process.env.DATABASE_PASSWARD
+);
 mongoose
-    .connect('mongodb://localhost:27017/article')
+    .connect(DB)
     .then(() => console.log('mongodb is connected...'))
     .catch((err) => console.log(err));
 
