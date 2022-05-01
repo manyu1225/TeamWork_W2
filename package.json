@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/manyu1225/TeamWork_W2#readme",
   "dependencies": {
+    "dotenv": "^16.0.0",
     "http": "0.0.1-security",
     "mongoose": "^6.3.0"
   }
