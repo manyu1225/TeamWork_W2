@@ -1,9 +1,12 @@
 const http = require('http');
 const mongoose = require('mongoose');
-const postArticleContent =require('./postArticleContent');
-const getArticleList=require('./getArticleList');
-const ArticleList = require('./models/ArticleList');
-const errorHandle=require('./errorHandle');
+const postArticleContent =require('../articleService/postArticleContent');
+const getArticleList=require('../articleService/getArticleList');
+const delArticleList=require('../articleService/delArticleList');
+const ArticleList = require('../models/ArticleList');
+const errorHandle=require('../utils/errorHandle');
+const SuccessMessage = require('../utils/SuccessOutputHandle');
+const { headers } = require('../utils//libs');
 const PORT =3005; 
 mongoose
     .connect('mongodb://localhost:27017/article')
@@ -12,25 +15,28 @@ mongoose
 
 const requestListener =async (req, res) =>{
     let body ='';
-
     req.on('data', (chunk) => {
         body += chunk;
     });
-
+    console.log("================================");
     if ( req.url === '/' && req.method === 'GET' ) {
-        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.writeHead(200,
+       {'Content-Type': 'text/html; charset=utf-8' ,
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization, Content-Length, X-Requested-With',
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET'}
+        );
         res.write('<h1>首頁</h1>');
         res.end();
-        return;
     } else if ( req.url === '/ArticleList' && req.method === 'GET' ) {
-        await getArticleList(res)
+        let data = await getArticleList(res);
+        SuccessMessage(res,data) ;
         res.end();
-        return;
     } else if ( req.url === '/ArticleList' && req.method === 'POST' ) {
         req.on('end', async()=>{       
             try {
                 let data = JSON.parse(body);
-
+                console.log(data);
                 if(!data.articleContent || data.articleContent.trim().length==0 ){
                     throw '貼文內容為必填'
                 }
@@ -40,24 +46,29 @@ const requestListener =async (req, res) =>{
                 if(!data.userPhoto || data.userPhoto.trim().length==0 ){
                     throw '發文者照片為必填'
                 }
-
-                await postArticleContent(res,data)
-                console.log('儲存完成')
+                let updata = await postArticleContent(res,data) ;
+                SuccessMessage(res,updata) ;
+                res.end();
             } catch (error) {
                 errorHandle(res,415,error+"，儲存錯誤");
             }
         });
-        res.end();
-        return;
-    } else if ( req.method === 'OPTIONS' ) {
+    }else if(req.url ==='/ArticleList' && req.method ==='DELETE'){
+        try {
+            const deldata= await delArticleList();
+            SuccessMessage(res,"已經成功DELETE") ;
+            res.end();
+        } catch (error) {
+            errorHandle(res,500,error+"DELETE錯誤");
+        }
+    }  else if ( req.method === 'OPTIONS' ) {
         res.writeHead(200);
         res.end();
-        return;
     } else {
         errorHandle(res,405,"請確認傳輸方式");
         res.end();
-        return;
     }
+    return;
 }
 
 const server = http.createServer(requestListener);
