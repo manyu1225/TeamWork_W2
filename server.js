@@ -6,7 +6,6 @@ const delArticleList=require('./articleService/delArticleList');
 const ArticleList = require('./models/ArticleList');
 const errorHandle=require('./utils/errorHandle');
 const SuccessMessage = require('./utils/SuccessOutputHandle');
-const { headers } = require('./utils/libs');
 
 const dotenv = require('dotenv');
 

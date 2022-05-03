@@ -5,8 +5,5 @@ const headers = {
     'Content-Type': 'application/json'
   }
   
-  const libs = {
-    headers
-  };
-  
-  module.exports = libs; 
+
+  module.exports = headers; 
