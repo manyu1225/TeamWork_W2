@@ -76,7 +76,7 @@ const reqListener = async(req,res)=>{
 
 
 const server = http.createServer(reqListener);
-server.listen(process.env.PORT, ()  => {
+server.listen(process.env.PORT || 3005, ()  => {
     if ( process.env.PORT ) {
         console.log('Deploy Heroku Successfully');
         return;
