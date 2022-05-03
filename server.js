@@ -1,17 +1,17 @@
 const http = require('http');
 const mongoose = require('mongoose');
-const postArticleContent =require('../articleService/postArticleContent');
-const getArticleList=require('../articleService/getArticleList');
-const delArticleList=require('../articleService/delArticleList');
-const ArticleList = require('../models/ArticleList');
-const errorHandle=require('../utils/errorHandle');
-const SuccessMessage = require('../utils/SuccessOutputHandle');
-const { headers } = require('../utils/libs');
+const postArticleContent =require('./articleService/postArticleContent');
+const getArticleList=require('./articleService/getArticleList');
+const delArticleList=require('./articleService/delArticleList');
+const ArticleList = require('./models/ArticleList');
+const errorHandle=require('./utils/errorHandle');
+const SuccessMessage = require('./utils/SuccessOutputHandle');
+const { headers } = require('./utils/libs');
 
 const dotenv = require('dotenv');
 
 dotenv.config({
-    path:'../config.env'
+    path:'./config.env'
 });
 
 const DB = process.env.DATABASE.replace(
