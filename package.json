@@ -7,12 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "engines": {
-    "node": "v16.x"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/manyu1225/TeamWork_W2.git"
+  },
+  "engines": {
+    "node": "v16.x"
   },
   "author": "",
   "license": "ISC",
@@ -23,6 +23,7 @@
   "dependencies": {
     "dotenv": "^16.0.0",
     "http": "0.0.1-security",
-    "mongoose": "^6.3.0"
+    "mongoose": "^6.3.0",
+    "nodemon": "^2.0.16",
   }
 }
