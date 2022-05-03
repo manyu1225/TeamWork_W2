@@ -1,4 +1,4 @@
-const { headers } = require('./libs');
+const headers  = require('./libs');
 
 /**
  * 錯誤處理

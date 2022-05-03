@@ -1,4 +1,4 @@
-
+const headers  = require('./libs');
 /**
  * 輸出前預處理
  * @param res 
@@ -6,6 +6,7 @@
  */
 function SuccessMessage(res,Output){
    let outputData = dataProcess(Output);
+   res.writeHead("200", headers);
     res.write(JSON.stringify({
         "status":'success',
         "data":outputData

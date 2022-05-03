@@ -6,7 +6,7 @@ const delArticleList=require('./articleService/delArticleList');
 const ArticleList = require('./models/ArticleList');
 const errorHandle=require('./utils/errorHandle');
 const SuccessMessage = require('./utils/SuccessOutputHandle');
-const { headers } = require('./utils/libs');
+const headers  = require('./utils/libs');
 
 const dotenv = require('dotenv');
 
@@ -30,7 +30,7 @@ const reqListener = async(req,res)=>{
     })
 
     if ( req.url === '/' && req.method === 'GET' ) {
-        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.writeHead(200, headers);
         res.write('<h1>首頁</h1>');
         res.end();
     } else if ( req.url === '/ArticleList' && req.method === 'GET' ) {
@@ -67,7 +67,7 @@ const reqListener = async(req,res)=>{
             errorHandle(res,500,error+"DELETE錯誤");
         }
     }  else if ( req.method === 'OPTIONS' ) {
-        res.writeHead(200);
+        res.writeHead(200,headers);
         res.end();
     } else {
         errorHandle(res,405,"請確認傳輸方式");
