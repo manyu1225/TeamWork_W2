@@ -1,43 +1,42 @@
 # TeamWork_W2
 
 
-## «áºİ 
+## å¾Œç«¯ 
+https://g2mongoheroku.herokuapp.com/ArticleList
 
- http://localhost:3005/  /   
-
-### «áºİ³W®æªí
+### å¾Œç«¯è¦æ ¼è¡¨
 :::    success
-1. URL : ```http://127.0.0.1:3005/``` ( ¥»¾÷¸ô®| PORT : 3005 )
-2. CollectionName : ```ArticleList```
-3. GET : ¨ú±o¤å³¹¦Cªí API
-    ::: spoiler ¸Ô²Ó¸ê°T
-    ¥»¾÷´ú¸Õ GET => ```http://127.0.0.1:3005/ArticleList```
-    ¤£¶·¶Ç¤J°Ñ¼Æ¡Aª½±µ³z¹L GET ¨ú¦^©Ò¦³¸ê®Æ
-    ¨ú±o¸ê®Æ½d¨Ò :
+1. URL : ```http://127.0.0.1:3005/``` ( æœ¬æ©Ÿè·¯å¾‘ PORT : 3005 )
+2. CollectionName : ```articleList```
+3. GET : å–å¾—æ–‡ç« åˆ—è¡¨ API
+    ::: spoiler è©³ç´°è³‡è¨Š
+    æœ¬æ©Ÿæ¸¬è©¦ GET => ```http://127.0.0.1:3005/ArticleList```
+    ä¸é ˆå‚³å…¥åƒæ•¸ï¼Œç›´æ¥é€é GET å–å›æ‰€æœ‰è³‡æ–™
+    å–å¾—è³‡æ–™ç¯„ä¾‹ :
         ![](https://i.imgur.com/4bKW7Eo.png)
     :::
-4. POST : ·s¼W¶K¤å API
-    ::: spoiler ¸Ô²Ó¸ê°T
-    ¥»¾÷´ú¸Õ POST => ```http://127.0.0.1:3005/ArticleList```
-    ¶Ç¤J°Ñ¼Æ
+4. POST : æ–°å¢è²¼æ–‡ API
+    ::: spoiler è©³ç´°è³‡è¨Š
+    æœ¬æ©Ÿæ¸¬è©¦ POST => ```http://127.0.0.1:3005/ArticleList```
+    å‚³å…¥åƒæ•¸
     
         {
-            // ©m¦W
+            // å§“å
             userName : string,
-            // ·s¼W®É¶¡ (¥i¥H¦b model °µ¹w³])
+            // æ–°å¢æ™‚é–“ (å¯ä»¥åœ¨ model åšé è¨­)
             createdAt : Date,
-            // ¨Ï¥ÎªÌ¹Ï¤ù
+            // ä½¿ç”¨è€…åœ–ç‰‡
             userPhoto : string,
-            // ¤W¶Ç¹Ï¤ù
+            // ä¸Šå‚³åœ–ç‰‡
             imgUrl : string
         }
     :::
 :::
 
-### ¶}µo«áºİ API
+### é–‹ç™¼å¾Œç«¯ API
 :::success
-1. fork [«áºİ GitHub repo ³sµ²](https://github.com/larrylinr5/week2TeamWork)
-2. ¦b server.js §¹¦¨«áºİ¼¶¼g
-3. Model ¥i¥H¶}¤@­Ó·sªº¸ê®Æ§¨¡A³Ğ«Ø¤@­Ó ArticleList.js ªº model
-4. ³s½u¦r¦ê¥i¥H¥ı¥Î¥»¦aªº mongoDB : ```mongoose.connect('mongodb://localhost:27017/ArticleList')```
+1. fork [å¾Œç«¯ GitHub repo é€£çµ](https://github.com/larrylinr5/week2TeamWork)
+2. åœ¨ server.js å®Œæˆå¾Œç«¯æ’°å¯«
+3. Model å¯ä»¥é–‹ä¸€å€‹æ–°çš„è³‡æ–™å¤¾ï¼Œå‰µå»ºä¸€å€‹ ArticleList.js çš„ model
+4. é€£ç·šå­—ä¸²å¯ä»¥å…ˆç”¨æœ¬åœ°çš„ mongoDB : ```mongoose.connect('mongodb://localhost:27017/ArticleList')```
 :::
