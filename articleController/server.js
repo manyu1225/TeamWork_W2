@@ -7,7 +7,7 @@ const ArticleList = require('../models/ArticleList');
 const errorHandle=require('../utils/errorHandle');
 const SuccessMessage = require('../utils/SuccessOutputHandle');
 const { headers } = require('../utils/libs');
-const PORT =3005; 
+
 const dotenv = require('dotenv');
 
 dotenv.config({
@@ -41,7 +41,7 @@ const reqListener = async(req,res)=>{
         req.on('end', async()=>{       
             try {
                 let data = JSON.parse(body);
-                console.log(data);
+                
                 if(!data.articleContent || data.articleContent.trim().length==0 ){
                     throw '貼文內容為必填'
                 }
@@ -71,9 +71,7 @@ const reqListener = async(req,res)=>{
         res.end();
     } else {
         errorHandle(res,405,"請確認傳輸方式");
-        res.end();
     }
-    return;
 };
 
 
